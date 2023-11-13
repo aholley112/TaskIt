@@ -1,6 +1,10 @@
+<div class="container">
 <div class="row">
   <div class="col-xs-12 col-md-6 offset-md-3">
     <!-- Auth Form -->
+    <div class="auth-form">
+      <h2>Welcome to TASKIT!</h2>
+      <p>Sign up to get things done</p>
     <form #authForm="ngForm" (ngSubmit)="onAuthSubmit(authForm)">
       <!-- Email -->
       <div class="form-group">
@@ -18,7 +22,7 @@
           {{ isSignInMode ? "Sign In" : "Sign Up" }}
         </button>
         <button class="btn btn-sm btn-transparent text-primary" type="button" (click)="toggleAuthMode()">
-          Switch to {{ isSignInMode ? "Sign Up" : "Sign In" }}
+          Switch to {{ isSignInMode ? "Sign Up" : " In" }}
         </button>
       </div>
     </form>
