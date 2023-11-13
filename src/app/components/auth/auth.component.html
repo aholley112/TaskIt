@@ -1,34 +1,42 @@
 <div class="container">
-<div class="row">
-  <div class="col-xs-12 col-md-6 offset-md-3">
-    <!-- Auth Form -->
-    <div class="auth-form">
-      <h2>Welcome to TASKIT!</h2>
-      <p>Sign up to get things done</p>
-    <form #authForm="ngForm" (ngSubmit)="onAuthSubmit(authForm)">
-      <!-- Email -->
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" class="form-control" required ngModel />
+  <div class="row">
+    <div class="col-xs-12 col-md-6 offset-md-3">
+      <!-- Auth Form -->
+      <div class="auth-form">
+        <h2>{{ isSignInMode ? 'Welcome Back!' : 'Welcome to ' }}<span class="task-color">TASK</span><span class="it-color">IT!</span></h2>
+        <p>{{ isSignInMode ? 'Lets get to work.' : 'Sign up to get things done.' }}</p>
+        <form #authForm="ngForm" (ngSubmit)="onAuthSubmit(authForm)">
+          <!-- First Name, Last Name, Email, Password Fields -->
+          <div *ngIf="!isSignInMode">
+            <div class="form-group">
+              <input type="text" id="firstName" name="firstName" class="form-control" placeholder="First Name" required ngModel />
+            </div>
+            <div class="form-group">
+              <input type="text" id="lastName" name="lastName" class="form-control" placeholder="Last Name" required ngModel />
+            </div>
+          </div>
+          <div class="form-group">
+            <input type="email" id="email" name="email" class="form-control" placeholder="Email" required ngModel />
+          </div>
+          <div class="form-group">
+            <input type="password" id="password" name="password" class="form-control" placeholder="Password" minlength="6" required ngModel />
+          </div>
+          <!-- Sign Up Button -->
+          <div class="form-group">
+            <button class="btn btn-block btn-success" type="submit" [disabled]="!authForm.valid">
+              {{ isSignInMode ? "Log In" : "Sign Up" }}
+            </button>
+          </div>
+          <!-- Toggle Mode -->
+          <div class="form-group">
+            <button class="btn btn-block btn-secondary" type="button" (click)="toggleAuthMode()">
+              {{ isSignInMode ? "Sign Up" : "Log In" }}
+            </button>
+          </div>
+        </form>
+        <p class="alert alert-danger mt-3" *ngIf="errorMsg">{{ errorMsg }}</p>
+        <p class="alert alert-success mt-3" *ngIf="successMessage">{{ successMessage }}</p>
       </div>
-      <!-- Password -->
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" class="form-control" minlength="6" required ngModel />
-      </div>
-      <!-- Actions -->
-      <div class="form-group d-flex justify-content-between">
-        <button class="btn btn-primary" type="submit" [disabled]="!authForm.valid">
-          {{ isSignInMode ? "Sign In" : "Sign Up" }}
-        </button>
-        <button class="btn btn-sm btn-transparent text-primary" type="button" (click)="toggleAuthMode()">
-          Switch to {{ isSignInMode ? "Sign Up" : " In" }}
-        </button>
-      </div>
-    </form>
-    <!-- Error Message -->
-    <p class="alert alert-danger mt-3" *ngIf="errorMsg">{{ errorMsg }}</p>
-    <!-- Success Message -->
-    <p class="alert alert-success mt-3" *ngIf="successMessage">{{ successMessage }}</p>
+    </div>
   </div>
 </div>
