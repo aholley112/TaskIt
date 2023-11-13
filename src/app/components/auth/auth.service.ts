@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
 import { catchError, tap, map } from 'rxjs/operators';
-import { environment } from 'TaskIt/src/environments/environment';
+import { environment } from 'src/environments/environment.production';
 
 @Injectable({
   providedIn: 'root',
@@ -15,7 +15,7 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   // Function to handle user sign-up
-  signUp(email: string, password: string): Observable<any> {
+  signUp(email: string, password: string, firstName?: string, lastName?: string): Observable<any> {
     const signUpData = {
       email: email,
       password: password,
