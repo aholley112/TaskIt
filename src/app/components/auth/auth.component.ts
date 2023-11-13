@@ -29,7 +29,7 @@ export class AuthComponent implements OnInit {
   // Function to handle form submission for authentication
   onAuthSubmit(form: NgForm) {
     if (form.valid) {
-      const { email, password } = form.value;
+      const { email, password, firstName, lastName } = form.value;
 
       if (this.isSignInMode) {
         // Sign in
@@ -43,7 +43,7 @@ export class AuthComponent implements OnInit {
         );
       } else {
         // Sign up
-        this.authService.signUp(email, password).subscribe(
+        this.authService.signUp(email, password, firstName, lastName).subscribe(
           () => {
             this.successMessage = 'Sign-up successful!';
             // Wait before redirecting
@@ -62,7 +62,7 @@ export class AuthComponent implements OnInit {
   toggleAuthMode() {
     this.isSignInMode = !this.isSignInMode;
     this.errorMsg = '';
+    this.successMessage='';
   }
 }
 
-// Am I here?
