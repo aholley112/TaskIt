@@ -1,0 +1,25 @@
+<!-- Sidebar Container -->
+<div class="sidebar-container position-relative">
+<!-- Logo and Navigation Buttons -->
+  <div>
+      <p id="logo"><span id="logo-one">TASK</span><span id="logo-two">IT</span></p>
+      <button class="btn task-list-btn" [routerLink]="['/tasks']" routerLinkActive="active">Task List</button>
+  <button class="btn kanban-board-btn" [routerLink]="['/kanban']" routerLinkActive="active">Kanban Board</button>
+  <button class="btn im-bored-btn" [routerLink]="['/bored']" routerLinkActive="active">I'm Bored</button>
+
+  </div>
+<!-- User Information Section -->
+  <div class="user-info position-absolute bottom-0 start-0">
+    <img src="https://images.pexels.com/photos/6976943/pexels-photo-6976943.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" id="profile-image" alt="profile image">
+    <!-- User Details -->
+    <div class="user-details">
+        <p id="user-name">{{ user.name }}</p>
+        <p id="user-email">{{ user.email }}</p>
+    </div>
+    <!-- Login Icon -->
+    <div class="login-icon">
+      <span class="material-symbols-outlined">login</span>
+    </div>
+  </div>
+
+</div>

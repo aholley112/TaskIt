@@ -1,0 +1,9 @@
+<div class="flex-container">
+  <aside *ngIf="router.url !== '/'" class="sidebar flex-item-fixed">
+    <app-sidebar></app-sidebar>
+  </aside>
+  <main class="main flex-item-grow">
+    <app-notification></app-notification>
+    <router-outlet></router-outlet>
+  </main>
+</div>

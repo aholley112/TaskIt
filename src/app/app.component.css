@@ -1,0 +1,17 @@
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.sidebar {
+  width: 244px;
+  height: 100vh;
+  left: 0;
+}
+.main {
+  flex-grow: 1;
+
+}
+
+

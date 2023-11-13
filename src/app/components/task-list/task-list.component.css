@@ -1,0 +1,35 @@
+.container {
+  margin-top: 20px;
+  margin-left: 10px;
+}
+.button {
+  width: 200px;
+  height: 48px;
+  top: 125px;
+  left: 50px;
+  border: none;
+  border-radius:  12px;
+  text-align: center;
+  justify-content: center;
+  background-color: rgba(72, 193, 91, 1);
+  color: white;
+}
+.material-icons {
+  cursor: pointer;
+  color: black;
+  margin-right: 10px;
+}
+
+.table-section {
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+
+}
+
+.yellow-dropdown {
+  background-color: yellow;
+  width: 150px;
+}
+
+

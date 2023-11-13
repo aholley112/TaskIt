@@ -1,0 +1,101 @@
+<!-- Main Container -->
+<div class="container">
+  <h1>Task List</h1>
+  <!-- Filter Section -->
+  <div class="filter-section">
+    <div class="row align-items-center">
+      <div class="col-md-1">
+        <label for="statusDropdown">Filters:</label>
+      </div>
+      <div class="col-md-2">
+        <!-- Status Dropdown -->
+        <div class="form-group custom-dropdown">
+          <select class="form-select" id="statusDropdown" [(ngModel)]="selectedStatus" (change)="filterTasks()">
+            <option selected value="">Status</option>
+            <option value="To Do">To Do</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Done">Done</option>
+          </select>
+        </div>
+      </div>
+      <!-- Date Dropdown -->
+      <div class="col-md-2">
+        <select class="form-select" id="dateDropdown" [(ngModel)]="selectedDate" (change)="filterTasks()">
+          <option selected value="">Due Date</option>
+          <option value="Today">Today</option>
+          <option value="Tomorrow">Tomorrow</option>
+          <option value="Next Week">Next Week</option>
+        </select>
+      </div>
+      <!--Priority Dropdown-->
+      <div class="col-md-2">
+        <select class="form-select" id="priorityDropdown"[(ngModel)]="selectedPriority" (change)="filterTasks()">
+          <option selected value="">Priority</option>
+          <option value="Low">Low</option>
+          <option value="Medium">Medium</option>
+          <option value="High">High</option>
+          <option value="Urgent">Urgent</option>
+        </select>
+      </div>
+      <button class="button" id="list-button" (click)="openAddTaskModal()">Add a New Task</button>
+    </div>
+  </div>
+</div>
+<!-- Table Section -->
+<div class="table-section">
+  <table class="table table-bordered custom table w-100 p-3">
+    <thead>
+      <tr>
+        <th style="width: 20%;">Title</th>
+        <th style="width: 20%;">Due Date</th>
+        <th style="width: 20%;">Priority</th>
+        <th style="width: 20%;">Status</th>
+        <th style="width: 20%;">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let task of filteredTasks">
+        <td>{{ task.title }}</td>
+        <td>{{ task.dueDate | date: 'MMMM' }} {{ getOrdinalNumber(task.dueDate | date: 'd') }}</td>
+        <td>{{ task.priority }}</td>
+        <!-- Task Status Dropdown -->
+        <td>
+          <select class="form-select mb-2 yellow-dropdown" id="Status Dropdown" [(ngModel)]="task.status">
+            <option value="To Do">To Do</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Done">Done</option>
+          </select>
+        </td>
+        <!-- Status Display Template -->
+          <ng-template #statusDisplay>
+            {{ task.status }}
+          </ng-template>
+        <td>
+          <!-- View Task Icon -->
+          <i
+            class="material-icons"
+            (click)="onViewTask(task.taskId)"
+            title="View Task"
+          >
+            <span class="material-symbols-outlined"> visibility </span>
+          </i>
+          <!-- Edit Task Icon -->
+          <i
+            class="material-icons"
+            (click)="onEditTask(task.taskId)"
+            title="Edit Task"
+          >
+            <span class="material-symbols-outlined"> edit_note </span>
+          </i>
+          <!-- Delete Task Icon -->
+          <i
+            class="material-icons"
+            (click)="onDeleteTask(task.taskId)"
+            title="Delete Task">
+            <span class="material-symbols-outlined"> delete </span>
+          </i>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

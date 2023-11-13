@@ -1,0 +1,29 @@
+<!-- This is one kanban card -->
+<div class="kanban-card" draggable="true" (dragstart)="onDragStart($event)" (dragend)="onDragEnd($event)">
+  <!-- Card Content Wrapper -->
+  <div class="card-content">
+    <!-- Title and Status Wrapper -->
+    <div class="title-status-wrapper">
+      <!-- Task Title -->
+      <div class="title">
+        {{ task.title }}
+      </div>
+
+      <!-- Status Dropdown -->
+      <select [(ngModel)]="task.status" (change)="onStatusChanged()">
+        <option value="In Progress">In Progress</option>
+        <option value="To Do">To Do</option>
+        <option value="Done">Done</option>
+      </select>
+    </div>
+    <!-- Priority  -->
+    <div class="priority">
+      Priority: <span>{{ task.priority }}</span>
+    </div>
+
+    <!-- Due Date -->
+    <div class="due-date">
+      Due Date: {{ task.dueDate | date : "MMMM" }} {{ getOrdinalNumber(task.dueDate | date : "d" | number) }}
+    </div>
+  </div>
+</div>

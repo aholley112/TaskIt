@@ -1,0 +1,85 @@
+<!-- Header-->
+<div class="modal-header">
+  <h4 class="modal-title">Add Task</h4>
+
+  <!-- Close Button -->
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')" style="font-size: 24px; color: #333; background: none; border: none; padding: 0;">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<!-- Form -->
+<form #taskForm="ngForm" (submit)="onSubmit()">
+  <div class="modal-body">
+    <!-- Left inputs: Title, Description -->
+    <div class="left-inputs">
+      <!-- Title -->
+      <div class="form-group">
+        <!-- Two way data binding with ngModel -->
+        <input type="text" [(ngModel)]="task.title" name="title" class="form-control" required minlength="5" maxlength="50" placeholder="Title">
+        <!-- Error messages for title -->
+        <small class="text-danger" *ngIf="taskForm.controls.title?.errors?.required && taskForm.controls.title?.touched">
+          Title is required.
+        </small>
+        <small class="text-danger" *ngIf="taskForm.controls.title?.errors?.minlength">
+          Title should be at least 5 characters.
+        </small>
+        <small class="text-danger" *ngIf="taskForm.controls.title?.errors?.maxlength">
+          Title should not exceed 50 characters.
+        </small>
+      </div>
+      <!-- Description -->
+      <div class="form-group">
+        <textarea [(ngModel)]="task.description" name="description" class="form-control" rows="3" required placeholder="Description"></textarea>
+        <!-- Error messages for description -->
+        <small class="text-danger" *ngIf="taskForm.controls.description?.errors?.required && taskForm.controls.description?.touched">
+          Description is required.
+        </small>
+      </div>
+    </div>
+    <!-- Right inputs: Due Date, Priority, Status -->
+    <div class="right-inputs">
+      <!-- Due Date -->
+      <div class="form-group">
+        <input type="text" onfocus="(this.type='date')" [(ngModel)]="task.dueDate" name="dueDate" class="form-control" required placeholder="Due Date">
+        <!-- Error messages for due date -->
+        <small class="text-danger" *ngIf="taskForm.controls.dueDate?.errors?.required && taskForm.controls.dueDate?.touched">
+          Due Date is required.
+        </small>
+      </div>
+      <!-- Priority -->
+      <div class="form-group">
+        <select [(ngModel)]="task.priority" name="priority" class="form-control" required>
+            <option value="" disabled selected>Priority</option>
+            <option value="High">High</option>
+            <option value="Medium">Medium</option>
+            <option value="Low">Low</option>
+        </select>
+        <!-- Error messages for priority -->
+        <small class="text-danger" *ngIf="taskForm.controls.priority?.errors?.required && taskForm.controls.priority?.touched">
+          Priority is required.
+        </small>
+      </div>
+      <!-- Status -->
+      <div class="form-group">
+        <select [(ngModel)]="task.status" name="status" class="form-control" required>
+            <option value="" disabled selected>Status</option>
+            <option value="To Do">To Do</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Done">Done</option>
+        </select>
+        <!-- Error messages for status -->
+        <small class="text-danger" *ngIf="taskForm.controls.status?.errors?.required && taskForm.controls.status?.touched">
+          Status is required.
+        </small>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Buttons -->
+  <div class="modal-footer">
+    <!-- Cancel button -->
+    <button type="button" class="btn btn-secondary" (click)="closeModal()">Cancel</button>
+    <!-- Submit button disabled if form is invalid -->
+    <button type="submit" class="btn btn-primary" [disabled]="taskForm.invalid">Create</button>
+  </div>
+</form>

@@ -1,0 +1,14 @@
+<!-- Container -->
+<div class="landing-container">
+  <!-- Heading -->
+  <h1>Welcome to <span class="green-text">TASK</span>IT</h1>
+  <p>This platform allows you to keep track of tasks professionally, domestically, and more. Sign up today to get to work!</p>
+  <img src="assets/landing-page.png" alt="Kanban Preview" class="kanban-preview">
+  <p>Create an account to get started today.</p>
+  <div class="button-container">
+    <!-- Buttons -->
+<button [routerLink]="['/auth']" [queryParams]="{ action: 'sign-up' }" queryParamsHandling="merge">Sign Up</button>
+<button [routerLink]="['/auth']" [queryParams]="{ action: 'sign-in' }" queryParamsHandling="merge">Sign In</button>
+
+  </div>
+</div>

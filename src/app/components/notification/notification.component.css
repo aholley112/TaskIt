@@ -1,0 +1,33 @@
+
+.add-notification {
+  background-color: lightgreen;
+  border: 1px solid darkgreen;
+  border-radius: 8px;
+  padding: 10px;
+  max-width: 600px;
+  margin-top: 20px;
+  margin-left: 20px;
+
+}
+
+.edit-notification {
+  background-color: lightyellow;
+  border: 1px solid darkgoldenrod;
+  border-radius: 8px;
+  padding: 10px;
+  max-width: 600px;
+  margin-top: 20px;
+  margin-left: 20px;
+
+}
+
+
+.delete-notification {
+  background-color: lightcoral;
+  border: 1px solid darkred;
+  border-radius: 8px;
+  padding: 10px;
+  max-width: 600px;
+  margin-top: 20px;
+  margin-left: 20px;
+}

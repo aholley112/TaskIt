@@ -1,0 +1,14 @@
+<div class="bored-container">
+  <h1>I'm Bored</h1>
+  <p>Let's find something to do.</p>
+
+  <!-- Generate Task Button -->
+  <button class="task-button" (click)="generateTask()">
+    {{ task ? 'Regenerate Task' : 'Generate Task' }}
+  </button>
+
+  <!-- Task Display with Add Task Button -->
+  <div *ngIf="task" class="task-display-container">
+    <app-task-display [task]="task" (addTaskEvent)="openAddTaskModal()"></app-task-display>
+  </div>
+</div>

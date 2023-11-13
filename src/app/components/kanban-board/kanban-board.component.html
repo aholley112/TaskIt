@@ -1,0 +1,56 @@
+<div class="kanban-board">
+  <h1>Kanban</h1>
+
+  <div class="column-headers">
+    <h2>To Do</h2>
+    <h2>In Progress</h2>
+    <h2>Done</h2>
+  </div>
+
+  <!-- Columns -->
+  <div class="columns">
+
+    <!-- To Do Column -->
+    <div class="kanban-column" (dragover)="onDragOver($event)" (drop)="onDrop($event, 'To Do')">
+      <div class="tasks-container">
+        <ng-container *ngFor="let task of todoTasks">
+          <app-kanban-card
+            [task]="task"
+            draggable="true"
+            (dragstart)="onDragStart($event, task)"
+            (statusChanged)="refreshTasks($event)">
+          </app-kanban-card>
+        </ng-container>
+      </div>
+    </div>
+
+    <!-- In Progress Column -->
+    <div class="kanban-column" (dragover)="onDragOver($event)" (drop)="onDrop($event, 'In Progress')">
+      <div class="tasks-container">
+        <ng-container *ngFor="let task of inProgressTasks">
+          <app-kanban-card
+            [task]="task"
+            draggable="true"
+            (dragstart)="onDragStart($event, task)"
+            (statusChanged)="refreshTasks($event)">
+          </app-kanban-card>
+        </ng-container>
+      </div>
+    </div>
+
+    <!-- Done Column -->
+    <div class="kanban-column" (dragover)="onDragOver($event)" (drop)="onDrop($event, 'Done')">
+      <div class="tasks-container">
+        <ng-container *ngFor="let task of doneTasks">
+          <app-kanban-card
+            [task]="task"
+            draggable="true"
+            (dragstart)="onDragStart($event, task)"
+            (statusChanged)="refreshTasks($event)">
+          </app-kanban-card>
+        </ng-container>
+      </div>
+    </div>
+
+  </div>
+</div>

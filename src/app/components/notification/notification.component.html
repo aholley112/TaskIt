@@ -1,0 +1,8 @@
+<div *ngIf="notificationMessage"
+     [ngClass]="{
+         'add-notification': notificationType === 'add',
+         'edit-notification': notificationType === 'edit',
+         'delete-notification': notificationType === 'delete'
+     }" class="notification">
+  {{ notificationMessage }}
+</div>

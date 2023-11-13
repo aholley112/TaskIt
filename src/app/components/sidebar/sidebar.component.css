@@ -1,0 +1,86 @@
+/* Styles for all buttons */
+.btn {
+  background-color: lightgrey;
+  color: black;
+  border: none;
+  padding: 10px 15px;
+  margin: 5px 0;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.3s;
+  display: block;
+  width: 150px;
+  height: 40px;
+  border-radius: 10px;
+}
+
+.btn.active {
+  background-color: rgba(72, 193, 91, 1);
+  color: #fff;
+}
+
+.sidebar-container {
+  display: flex;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+  border-right: 1px solid #D2D2D2;
+}
+
+#logo {
+  font-size: 28px;
+  font-weight: 700;
+  margin-top: 50px;
+  margin-bottom: 25px;
+}
+
+#logo-one {
+  color: rgba(72, 193, 91, 1);
+}
+
+#logo-two {
+  color: #000;
+}
+
+.user-info {
+  display: flex;
+  border-top: 1px solid #D2D2D2;
+  align-items: center;
+  width: 100%;
+  margin-top: auto;
+  justify-content: space-between;
+}
+
+#profile-image {
+  height: 38px;
+  width: 38px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-left: 10px;
+}
+
+#user-name {
+  font-size: 14px;
+  text-align: left;
+  margin-bottom: 1px;
+  margin-top: 20px;
+  margin-left: 10px;
+}
+
+#user-email {
+  font-size: 12px;
+  text-align: left;
+  margin-left: 10px;
+}
+
+.login-icon {
+  font-size: 24px;
+  color: black;
+  cursor: pointer;
+  margin-right: 10px;
+  margin-top: 20px;
+}
+
+.user-details {
+  flex-grow: 1;
+}
