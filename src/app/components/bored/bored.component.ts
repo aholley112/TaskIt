@@ -17,7 +17,7 @@ export class BoredComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // Your initialization code, if any
+    
   }
 
   generateTask(): void {
