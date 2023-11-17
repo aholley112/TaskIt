@@ -85,8 +85,9 @@ export class TaskListComponent implements OnInit {
       return;
     }
 
-    this.modalService.open(ViewTaskComponent, { size: 'lg' }).componentInstance.task = selectedTask;
-  }
+    const modalRef = this.modalService.open(ViewTaskComponent);
+  modalRef.componentInstance.selectedTask = selectedTask;
+}
 
   onDeleteTask(taskId: string): void {
     const selectedTask = this.tasks.find(task => task.taskId === taskId);
