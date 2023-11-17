@@ -38,10 +38,10 @@ import { AuthComponent } from './components/auth/auth.component';
     NotificationComponent,
     BoredComponent,
     BoredTaskDisplayComponent,
-    AuthComponent,
+    AuthComponent
 
   ],
-  
+
   imports: [
     BrowserModule,
     HttpClientModule,
