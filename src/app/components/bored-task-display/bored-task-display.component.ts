@@ -29,18 +29,17 @@ export class BoredTaskDisplayComponent {
         if (newTask) {
           // Transform the Bored API task to your application's task model
           const newTaskModel: TaskModel = {
+            taskId: Date.now().toString(),
             title: newTask.title || this.task?.activity,
             description: newTask.description,
             dueDate: newTask.dueDate,
             priority: newTask.priority,
-            status: 'pending',
+            status: newTask.status,
             actions: []
           };
 
           // Add the new task to the task list
           this.taskService.addTask(newTaskModel);
-          // Redirect to the Task List page
-          this.router.navigate(['/task-list']);
         }
       },
       (reason) => {

@@ -18,8 +18,7 @@ export class TaskService {
 
   // Method to add a new task
   addTask(task: Task) {
-    const tasks = this.tasksSubject.value;
-    tasks.push(task);
+    const tasks = [...this.tasksSubject.value, task];
     this.updateTasks(tasks);
   }
 
