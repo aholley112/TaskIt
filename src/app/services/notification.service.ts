@@ -25,6 +25,8 @@ export class NotificationService {
     const message = `Task Edited: '${taskTitle}'`;
     this.showNotification(message);
   }
+
+  // Method for sending a notification about a deleted task
   notifyTaskDeleted(taskTitle: string) {
     const message = `Task Deleted: '${taskTitle}'`;
     this.showNotification(message);
