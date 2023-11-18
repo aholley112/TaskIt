@@ -31,7 +31,7 @@ export class TaskListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // Subscribe to task changes and update the task list accordingly
+    // // On initialization, subscribe to task updates from the task service
     this.taskService.tasks$.subscribe(tasks => {
       this.tasks = tasks;
       this.filterTasks();
