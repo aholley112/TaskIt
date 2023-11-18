@@ -32,22 +32,21 @@ export class TaskListComponent implements OnInit {
     // Subscribe to task changes and update the task list accordingly
     this.taskService.tasks$.subscribe(tasks => {
       this.tasks = tasks;
-      this.filterTasks(); // Apply any existing filters
+      this.filterTasks();
     });
   }
 
   filterTasks(): void {
-    // Define your filter logic here
-    // For example, filter by status:
+
     if (this.selectedStatus) {
       this.filteredTasks = this.tasks.filter(task => task.status === this.selectedStatus);
     } else {
-      // No filter selected, display all tasks
+     // to display all tasks
       this.filteredTasks = [...this.tasks];
     }
-    // Implement additional filtering by date and priority as necessary
-  }
 
+  }
+  // To add a task
   openAddTaskModal(): void {
     const modalRef = this.modalService.open(AddTaskComponent);
     modalRef.result.then((result: Task) => {
@@ -56,10 +55,10 @@ export class TaskListComponent implements OnInit {
         this.notificationService.notifyNewTask(result.title);
       }
     }, (reason) => {
-      // Modal dismissed, you could handle the dismissal reason if needed
+      // Modal dismissed.
     });
   }
-
+  // To edit a task
   onEditTask(taskId: string): void {
     const selectedTask = this.tasks.find(task => task.taskId === taskId);
     if (!selectedTask) {
@@ -75,10 +74,10 @@ export class TaskListComponent implements OnInit {
         this.notificationService.notifyTaskEdited(editedTask.title);
       }
     }, (reason) => {
-      // Modal dismissed, you could handle the dismissal reason if needed
+
     });
   }
-
+  // To view a task
   onViewTask(taskId: string): void {
     const selectedTask = this.tasks.find(task => task.taskId === taskId);
     if (!selectedTask) {
@@ -104,7 +103,7 @@ export class TaskListComponent implements OnInit {
         this.notificationService.notifyTaskDeleted(selectedTask.title);
       }
     }, (reason) => {
-      // Modal dismissed, you could handle the dismissal reason if needed
+      // Modal dismissed
     });
   }
   // Function to get the ordinal number
