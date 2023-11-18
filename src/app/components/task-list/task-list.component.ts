@@ -31,13 +31,13 @@ export class TaskListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // // On initialization, subscribe to task updates from the task service
+    // On initialization, subscribe to task updates from the task service
     this.taskService.tasks$.subscribe(tasks => {
       this.tasks = tasks;
       this.filterTasks();
     });
   }
-
+ // Filter tasks based off criteria
   filterTasks(): void {
 
     if (this.selectedStatus) {
@@ -56,8 +56,6 @@ export class TaskListComponent implements OnInit {
         this.taskService.addTask(result);
         this.notificationService.notifyNewTask(result.title);
       }
-    }, (reason) => {
-      // Modal dismissed.
     });
   }
   // To edit a task
@@ -66,7 +64,6 @@ export class TaskListComponent implements OnInit {
     if (!selectedTask) {
       return;
     }
-
     const modalRef = this.modalService.open(EditTaskComponent);
     modalRef.componentInstance.task = { ...selectedTask };
 
@@ -75,7 +72,6 @@ export class TaskListComponent implements OnInit {
         this.taskService.editTask(editedTask);
         this.notificationService.notifyTaskEdited(editedTask.title);
       }
-    }, (reason) => {
 
     });
   }
