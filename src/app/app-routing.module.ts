@@ -17,11 +17,11 @@ const routes: Routes = [
   { path: 'auth', component: AuthComponent },
   { path: 'taskslist', component: TaskListComponent },
 
-
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
+
 export class AppRoutingModule { }
