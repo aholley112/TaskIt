@@ -14,7 +14,9 @@ import { NotificationService } from '../../services/notification.service';
   styleUrls: ['./task-list.component.css']
 })
 export class TaskListComponent implements OnInit {
+  // Array to store all tasks
   tasks: Task[] = [];
+  // Array to store filtered tasks
   filteredTasks: Task[] = [];
 
   // Variables for filter criteria
