@@ -86,6 +86,7 @@ export class TaskListComponent implements OnInit {
   modalRef.componentInstance.selectedTask = selectedTask;
 }
 
+// To delete a task
   onDeleteTask(taskId: string): void {
     const selectedTask = this.tasks.find(task => task.taskId === taskId);
     if (!selectedTask) {
