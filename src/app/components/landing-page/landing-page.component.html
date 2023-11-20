@@ -7,8 +7,8 @@
   <p>Create an account to get started today.</p>
   <div class="button-container">
     <!-- Buttons -->
-<button [routerLink]="['/auth']" [queryParams]="{ action: 'sign-up' }" queryParamsHandling="merge">Sign Up</button>
-<button [routerLink]="['/auth']" [queryParams]="{ action: 'sign-in' }" queryParamsHandling="merge">Sign In</button>
-
+<button [routerLink]="['/auth']" [queryParams]="{ action: 'sign-up' }" queryParamsHandling="merge" class="signup-button">Sign Up</button>
+<span class="or-text">or</span>
+<button [routerLink]="['/auth']" [queryParams]="{ action: 'sign-in' }" queryParamsHandling="merge" class="login-button">Log In</button>
   </div>
 </div>
