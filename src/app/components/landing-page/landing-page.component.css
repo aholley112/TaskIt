@@ -39,4 +39,12 @@ p {
   padding: 10px 20px;
 }
 
+.login-button {
+  background-color: white;
+  color: green;
+  border-radius: 15px;
+  border: 2 px solid green;
+  padding: 10px 20px;
+}
+
 
