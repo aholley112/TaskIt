@@ -40,13 +40,22 @@ export class TaskListComponent implements OnInit {
  // Filter tasks based off criteria
   filterTasks(): void {
 
+    let tempFilteredTasks = [...this.tasks];
+    // Filter by status
     if (this.selectedStatus) {
-      this.filteredTasks = this.tasks.filter(task => task.status === this.selectedStatus);
-    } else {
-     // to display all tasks
-      this.filteredTasks = [...this.tasks];
+      tempFilteredTasks = tempFilteredTasks.filter(task => task.status === this.selectedStatus);
     }
 
+    //Filter by date. Need to come back to
+
+    
+    // Filter by priority
+    if (this.selectedPriority) {
+      tempFilteredTasks = tempFilteredTasks.filter(task => task.priority === this.selectedPriority);
+    }
+
+    // Update the filtered tasks
+    this.filteredTasks = tempFilteredTasks;
   }
   // To add a task
   openAddTaskModal(): void {
