@@ -18,7 +18,6 @@ export class TaskListComponent implements OnInit {
   tasks: Task[] = [];
   // Array to store filtered tasks
   filteredTasks: Task[] = [];
-
   // Variables for filter criteria
   selectedStatus: string = '';
   selectedDate: string = '';
@@ -37,6 +36,29 @@ export class TaskListComponent implements OnInit {
       this.filterTasks();
     });
   }
+  isToday(date: Date): boolean {
+    const today = new Date();
+    return date.getDate() === today.getDate() &&
+           date.getMonth() === today.getMonth() &&
+           date.getFullYear() === today.getFullYear();
+  }
+
+  isTomorrow(date: Date): boolean {
+    const today = new Date();
+    const tomorrow = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 1);
+    return date.getDate() === tomorrow.getDate() &&
+           date.getMonth() === tomorrow.getMonth() &&
+           date.getFullYear() === tomorrow.getFullYear();
+  }
+  isNextWeek(date: Date): boolean {
+    const today = new Date();
+    const nextWeekStart = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 7);
+    const nextWeekEnd = new Date(nextWeekStart.getFullYear(), nextWeekStart.getMonth(), nextWeekStart.getDate() + 6);
+
+    return date >= nextWeekStart && date <= nextWeekEnd;
+  }
+
+
  // Filter tasks based off criteria
   filterTasks(): void {
 
@@ -47,8 +69,22 @@ export class TaskListComponent implements OnInit {
     }
 
     //Filter by date. Need to come back to
+    if (this.selectedDate) {
+      tempFilteredTasks = tempFilteredTasks.filter(task => {
+        const taskDueDate = new Date(task.dueDate);
+        taskDueDate.setHours(0, 0, 0, 0); // Normalize the time part of the date
 
-    
+        if (this.selectedDate === 'Today') {
+          return this.isToday(taskDueDate);
+        } else if (this.selectedDate === 'Tomorrow') {
+          return this.isTomorrow(taskDueDate);
+        } else if (this.selectedDate === 'Next Week') {
+          return this.isNextWeek(taskDueDate);
+        }
+        return false;
+      });
+    }
+
     // Filter by priority
     if (this.selectedPriority) {
       tempFilteredTasks = tempFilteredTasks.filter(task => task.priority === this.selectedPriority);
