@@ -11,18 +11,24 @@ export class TaskService {
 
   constructor() {}
 
-  // Method to retrieve all tasks as an observable
+  // Method to retrieve all tasks
   getTasks(): Observable<Task[]> {
     return this.tasks$;
   }
+  // Save tasks to local storage
+  saveTasks(tasks: Task[]) {
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+  }
 
   // Method to add a new task
-  addTask(task: Task) {
-    const tasks = [...this.tasksSubject.value, task];
+   addTask(newTask: Task) {
+    // Get current tasks from BehaviorSubject
+    const tasks = this.tasksSubject.value;
+    tasks.push(newTask);
     this.updateTasks(tasks);
   }
 
-  // Method to edit an existing task
+  // Method to edit a task
   editTask(editedTask: Task) {
     const tasks = this.tasksSubject.value;
     const index = tasks.findIndex(t => t.taskId === editedTask.taskId);
@@ -50,13 +56,8 @@ export class TaskService {
 
   // Helper method to update tasks in both local storage and BehaviorSubject
   private updateTasks(tasks: Task[]) {
-    this.saveTasksToStorage(tasks);
+    this.saveTasks(tasks);
     this.tasksSubject.next(tasks);
-  }
-
-  // Helper method to save tasks to local storage
-  private saveTasksToStorage(tasks: Task[]) {
-    localStorage.setItem('tasks', JSON.stringify(tasks));
   }
 
   // Helper method to retrieve tasks from local storage
