@@ -36,14 +36,13 @@ export class TaskListComponent implements OnInit {
       this.filterTasks();
     });
   }
-
+  // Check to see if a date is today
   isToday(date: Date): boolean {
     console.log('Today Filter:', date)
     const today = new Date();
     return date.getDate() === today.getDate()
-
   }
-
+  // Check to see if a date is tomorrow
   isTomorrow(date: Date): boolean {
     console.log('Tomorrow Filter:', date)
     const today = new Date();
@@ -53,6 +52,7 @@ export class TaskListComponent implements OnInit {
            date.getMonth() === tomorrow.getMonth() &&
            date.getFullYear() === tomorrow.getFullYear();
   }
+  // Check to see if a date is next week
   isNextWeek(date: Date): boolean {
     console.log('Next Week Filter:', date)
     const today = new Date();
@@ -63,22 +63,20 @@ export class TaskListComponent implements OnInit {
   }
 
 
- // Filter tasks based off criteria
+ // Filter tasks based off selected status, date, and priority
   filterTasks(): void {
-
     let tempFilteredTasks = [...this.tasks];
     // Filter by status
     if (this.selectedStatus) {
       tempFilteredTasks = tempFilteredTasks.filter(task => task.status === this.selectedStatus);
     }
 
-    //Filter by date. Need to come back to
+    //Filter by date.
     if (this.selectedDate) {
       tempFilteredTasks = tempFilteredTasks.filter(task => {
         const taskDueDate = new Date(task.dueDate);
         console.log(task.dueDate);
-        taskDueDate.setHours(0, 0, 0, 0); // Normalize the time part of the date
-
+        taskDueDate.setHours(0, 0, 0, 0);
 
         if (this.selectedDate === 'Today') {
           return this.isToday(taskDueDate);
