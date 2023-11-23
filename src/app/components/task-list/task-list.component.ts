@@ -46,9 +46,7 @@ export class TaskListComponent implements OnInit {
     const today = new Date();
     const tomorrow = new Date(today);
     tomorrow.setDate(today.getDate() +1);
-    return date.getDate() === tomorrow.getDate() &&
-           date.getMonth() === tomorrow.getMonth() &&
-           date.getFullYear() === tomorrow.getFullYear();
+    return date.getDate() === tomorrow.getDate()
   }
   // Check to see if a date is next week
   isNextWeek(date: Date): boolean {
