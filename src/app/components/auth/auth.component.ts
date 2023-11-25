@@ -46,6 +46,8 @@ export class AuthComponent implements OnInit {
         this.authService.signUp(email, password, firstName, lastName).subscribe(
           () => {
             this.successMessage = 'Sign-up successful!';
+            // Clear the form
+            form.reset();
             // Wait before redirecting
             setTimeout(() => {
               this.router.navigate(['/taskslist']);
