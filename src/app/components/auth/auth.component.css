@@ -46,7 +46,8 @@
 }
 
 .auth-form .btn-secondary {
-  background-color: #6c757d;
+  background-color: transparent; 
+  color: rgba(72, 193, 91, 1)
 }
 
 .auth-form .button-container {
