@@ -9,10 +9,12 @@
           <!-- First Name, Last Name, Email, Password Fields -->
           <div *ngIf="!isSignInMode">
             <div class="form-group">
-              <input type="text" id="firstName" name="firstName" class="form-control" placeholder="First Name" required ngModel />
+              <label for="firstName">First Name</label>
+              <input type="text" id="firstName" name="firstName" class="form-control" required ngModel />
             </div>
             <div class="form-group">
-              <input type="text" id="lastName" name="lastName" class="form-control" placeholder="Last Name" required ngModel />
+              <label for="lastName">Last Name</label>
+              <input type="text" id="lastName" name="lastName" class="form-control" required ngModel />
             </div>
           </div>
           <div class="form-group">
