@@ -28,6 +28,7 @@
           <!-- Sign Up and Log In Buttons -->
           <div class="form-row">
             <div class="col button-container">
+              <span *ngIf="!isSignInMode" class="auth-switch-text">Have an account?</span>
               <button class="btn btn-success" type="submit" [disabled]="!authForm.valid">
                 {{ isSignInMode ? "Log In" : "Sign Up" }}
               </button>
