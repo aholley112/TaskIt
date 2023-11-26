@@ -3,7 +3,7 @@
     <div class="col-xs-12 col-md-6 offset-md-3">
       <!-- Auth Form -->
       <div class="auth-form">
-        <h2>{{ isSignInMode ? 'Welcome Back!' : 'Welcome to ' }}<span class="task-color">TASK</span><span class="it-color">IT!</span></h2>
+        <h2>{{ isSignInMode ? 'Welcome Back!' : 'Welcome to ' }}<span *ngIf="!isSignInMode" class="task-color">TASK</span><span *ngIf="!isSignInMode"class="it-color">IT!</span></h2>
         <p>{{ isSignInMode ? 'Lets get to work.' : 'Sign up to get things done.' }}</p>
         <form #authForm="ngForm" (ngSubmit)="onAuthSubmit(authForm)">
           <!-- First Name, Last Name, Email, Password Fields -->
@@ -29,6 +29,7 @@
           <div class="form-row">
             <div class="col button-container">
               <span *ngIf="!isSignInMode" class="auth-switch-text">Have an account?</span>
+              <span *ngIf="isSignInMode" class="auth-switch-text">Don't have an account?</span>
               <button class="btn btn-secondary" type="button" (click)="toggleAuthMode()">
                 {{ isSignInMode ? "Sign Up" : "Log In" }}
               </button>
