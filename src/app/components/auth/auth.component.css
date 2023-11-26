@@ -1,8 +1,8 @@
 .auth-form {
-  max-width: 500px;
-  margin: 2rem auto;
+  max-width: 600px;
+  margin: 6rem auto 2rem;
   padding: 2rem;
-  background: #fcfcfc;
+  background: #fcfcfc ;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
 }
@@ -38,6 +38,7 @@
   color: #fff;
   align-self: center;
   margin: 0 5px;
+
 }
 
 .auth-form .btn-success {
@@ -51,7 +52,7 @@
 
 .auth-form .button-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
 
 }

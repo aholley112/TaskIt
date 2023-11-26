@@ -30,6 +30,7 @@
             <div class="col button-container">
               <span *ngIf="!isSignInMode" class="auth-switch-text">Have an account?</span>
               <span *ngIf="isSignInMode" class="auth-switch-text">Don't have an account?</span>
+              <!--Toggle Button-->
               <button class="btn btn-secondary" type="button" (click)="toggleAuthMode()">
                 {{ isSignInMode ? "Sign Up" : "Log In" }}
               </button>
